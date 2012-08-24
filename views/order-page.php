@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <h3><?php _e('Parcelware Order Exporter', 'wp-parcelware-plugin'); ?></h3>
 
 <form method="post" action="<?php echo $form_action; ?>">
@@ -15,7 +11,7 @@
 			<td><input type="text" id="date-to" name="date-to" value="<?php echo $datetime_today; ?>" /></td>
 		</tr>
 	</table>
-	<?php submit_button(); ?>
+	<?php submit_button( __('Download CSV File', 'wp-parcelware-plugin') ); ?>
 </form>
 
 <script type="text/javascript">

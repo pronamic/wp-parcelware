@@ -1,0 +1,41 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Parcelware\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-24 16:25+0100\n"
+"PO-Revision-Date: 2012-08-24 16:27+0100\n"
+"Last-Translator: \n"
+"Language-Team: Pronamic <info@pronamic.nl>\n"
+"Language: Dutch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: views/order-page.php:1
+msgid "Parcelware Order Exporter"
+msgstr "Parcelware Order Exporter"
+
+#: views/order-page.php:6
+msgid "Date from"
+msgstr "Vanaf"
+
+#: views/order-page.php:10
+msgid "Date to"
+msgstr "Tot"
+
+#: views/order-page.php:15
+msgid "Skip orders that have already been exported."
+msgstr "Sla bestellingen over die al eerder zijn ge&#235;xporteerd."
+
+#: views/order-page.php:18
+msgid "Download CSV File"
+msgstr "Download CSV Bestand"
+
+#: classes/class-wp-parcelware-admin.php:35
+#: classes/class-wp-parcelware-admin.php:36
+msgid "Parcelware"
+msgstr "Parcelware"

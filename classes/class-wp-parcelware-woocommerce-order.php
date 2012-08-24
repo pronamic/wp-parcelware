@@ -37,7 +37,5 @@ class WP_Parcelware_Woocommerce_Order extends WP_Parcelware_Abstract_Order {
 		
 		foreach($order_settings as $key => $order_setting)
 			$this->set_variable($key, $order_setting);
-		
-		//foreach($meta as $key => $value) echo $key . ' => ' . $value[0] . '<br />';
 	}
 }

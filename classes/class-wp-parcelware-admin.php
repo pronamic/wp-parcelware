@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * The admin class takes care of building the admin pages of the plugin
  * 
  * @version 23-08-2012
  */
@@ -77,6 +77,7 @@ class WP_Parcelware_Admin {
 	
 	/**
 	 * This function is called when a submit has come through this page
+	 * Prepares the csv file and offers it as download to the user.
 	 */
 	static function admin_submit(){
 		if( ! isset( $_POST['submit'] ) )
@@ -97,8 +98,17 @@ class WP_Parcelware_Admin {
 		// Convert all orders to Parcelware objects and export them as csv.
 		$csv = WP_Parcelware_Abstract_Order::get_csv_header() . "\r\n";
 		foreach($orders as $order){
+			// Check if already exported. If 'always-export' is set, export order anyways.
+			$already_exported = get_post_meta( $order->ID, 'wp-parcelware-has-already-been-exported', true);
+			if( $already_exported && isset( $_POST['skip-already-exported'] ) )
+				continue;
+			
+			// Get order and export to csv
 			$class = new WP_Parcelware_Woocommerce_Order( $order->ID );
 			$csv .= $class->to_csv(). "\r\n";
+			
+			// Save as exported
+			update_post_meta( $order->ID, 'wp-parcelware-has-already-been-exported', true);
 		}
 		
 		// Set headers for download

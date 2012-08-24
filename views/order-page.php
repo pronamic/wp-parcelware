@@ -10,6 +10,10 @@
 			<td><?php _e('Date to', 'wp-parcelware-plugin'); ?></td>
 			<td><input type="text" id="date-to" name="date-to" value="<?php echo $datetime_today; ?>" /></td>
 		</tr>
+		<tr>
+			<td><input type="checkbox" name="skip-already-exported" value="true" checked="checked" /></td>
+			<td><?php _e('Skip orders that have already been exported.', 'wp-parcelware-plugin'); ?></td>
+		</tr>
 	</table>
 	<?php submit_button( __('Download CSV File', 'wp-parcelware-plugin') ); ?>
 </form>

@@ -1,15 +1,25 @@
 <?php
 /**
+ * Abstract superclass for all orders. This class stores the general values
+ * that are used by Parcelware. It is always constructed by it's subclasses
+ * and after construct will always call the abstract read_order_settings function
+ * to have it's subclasses read the webshop's specific way of storing order values.
+ * The variables stored in this class can be exported to a row of CSV.
  * 
- * 
+ * @abstract
  * @version 23-08-12
  */
-abstract class Wp_Parcelware_Abstract_Order {
+abstract class WP_Parcelware_Abstract_Order {
 	
 	/**
-	 * Class variables array
+	 * Post id
 	 */
-	private $variables = array(
+	private $post_id;
+	
+	/**
+	 * Static keys array 
+	 */
+	static private $variable_keys = array(
 		'order_id' => null,
 		'first_name' => null,
 		'last_name' => null,
@@ -24,21 +34,73 @@ abstract class Wp_Parcelware_Abstract_Order {
 	);
 	
 	/**
+	 * Variables array
+	 */
+	private $variables;
+	
+	/**
 	 * Constructor
 	 * 
-	 * @param int $order_id
+	 * @param int $post_id
 	 */
-	protected function __construct( $id ){
-		set_variable('order_id', $id );
+	protected function __construct( $post_id ){
+		$this->set_post_id( $post_id );
 		
-		$this->read_settings();
+		$this->variables = self::$variable_keys;
+		
+		$this->read_order_settings();
 	}
 	
 	/**
-	 * Read order variables from the database and store them in
-	 * their respective variable slot
+	 * Builds the header row for the csv file
+	 * 
+	 * @return string $csv
 	 */
-	abstract function read_settings();
+	static function get_csv_header(){
+		if( empty( self::$variable_keys ) )
+			return '';
+		
+		$csv = '';
+		foreach( self::$variable_keys as $variable_key => $variable_value )
+			$csv .= $variable_key . ',';
+		
+		return substr($csv, 0, -1);
+	}
+	
+	/**
+	 * Converts this object to a comma separated values line
+	 * 
+	 * @param mixed array $array
+	 * @return string $csv_line
+	 */
+	function to_CSV(){
+		if( empty( $this->variables ) )
+			return '';
+		
+		$csv = '';
+		foreach( $this->variables as $variable )
+			$csv .= $variable . ',';
+		
+		return substr($csv, 0 , -1);
+	}
+	
+	/**
+	 * Get post id
+	 * 
+	 * @return int $post_id
+	 */
+	function get_post_id(){
+		return $this->post_id;
+	}
+	
+	/**
+	 * Set post id
+	 * 
+	 * @param int $post_id
+	 */
+	function set_post_id( $post_id ){
+		$this->post_id = $post_id;
+	}
 	
 	/**
 	 * Get variable
@@ -47,10 +109,10 @@ abstract class Wp_Parcelware_Abstract_Order {
 	 * @return mixed $variable
 	 */
 	function get_variable( $name ){
-		if( ! isset( $variables[ $name ] ) )
+		if( ! isset( $this->variables[ $name ] ) )
 			return;
 		
-		return $variables[ $name ];
+		return $this->variables[ $name ];
 	}
 	
 	/**
@@ -78,22 +140,18 @@ abstract class Wp_Parcelware_Abstract_Order {
 	 * @param string $value
 	 */
 	protected function set_variable( $name, $value ){
-		if( ! isset( $name ) || ! isset( $variables[ $name ] ) )
+		if( ! array_key_exists( $name, $this->variables ) || ! isset( $value ) )
 			return;
 		
-		$variables[ $name ] = $value;
+		$this->variables[ $name ] = $value;
 	}
 	
 	/**
-	 * Converts this object to a comma separated values line
+	 * Read order variables from the database and store them in
+	 * their respective variable slot. This function is called 
+	 * on creation of the object.
 	 * 
-	 * @return string $csv_line
+	 * @abstract
 	 */
-	function to_CSV(){
-		$csv = '';
-		foreach($this->variables as $variable)
-			$csv = $variable . ',';
-		
-		return substr($csv, 0 , -1);
-	}
+	abstract function read_order_settings();
 }

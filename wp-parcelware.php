@@ -15,7 +15,7 @@ License: GPLv2
  *
  * @version 22-08-12
  */
-class Wp_Parcelware {
+class WP_Parcelware {
 
 	/**
 	 * Bootstraps the plugin
@@ -27,10 +27,8 @@ class Wp_Parcelware {
 		// Auto include classes
 		self::auto_include();
 		
-		if( is_admin() ){ // Initialize admin
-			include_once('classes/class-wp-parcelware-admin.php');
+		if( is_admin() ) // Initialize admin
 			WP_Parcelware_Admin::init();
-		}
 	}
 
 	/**
@@ -70,10 +68,8 @@ class Wp_Parcelware {
 			return;
 
 		function wp_parcelware_file_autoloader( $name ) {
-			$name = explode('-', str_replace('\\', DIRECTORY_SEPARATOR, $name ) );
-			unset( $name[ 0 ] );
-			echo $name = str_replace(' ', '_', ucwords( implode(' ', $name ) ) );
-			$file = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'classes' . DIRECTORY_SEPARATOR . $name . '.php';
+			$name = strtolower( str_replace('_', '-', $name ) );
+			$file = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'classes' . DIRECTORY_SEPARATOR . 'class-' . $name . '.php';
 
 			if( is_file( $file ) )
 				require_once $file;

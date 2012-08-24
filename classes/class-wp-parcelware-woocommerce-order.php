@@ -1,5 +1,5 @@
 <?php
-class Wp_Parcelware_Woocommerce_Order extends Wp_Parcelware_Abstract_Order {
+class WP_Parcelware_Woocommerce_Order extends WP_Parcelware_Abstract_Order {
 	
 	/**
 	 * Constructor

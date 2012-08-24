@@ -4,13 +4,19 @@
  * 
  * @version 23-08-2012
  */
-class Wp_Parcelware_Admin {
+class WP_Parcelware_Admin {
+	
+	private static $submenu_parent_slug = 'tools.php';
+	private static $submenu_menu_slug = 'wp-parcelware-order-page';
 	
 	/**
 	 * Initialize admin
 	 */
 	static function init(){
-		add_action( 'admin_menu', array( __CLASS__, 'admin_menu' ) );
+		// Load admin menu items
+		add_action('admin_menu', array( __CLASS__, 'admin_menu') );
+		
+		add_action('init', array( __CLASS__, 'enqueue') );
 	}
 	
 	/**
@@ -18,12 +24,34 @@ class Wp_Parcelware_Admin {
 	 */
 	static function admin_menu(){
 		add_submenu_page(
-			'tools.php',
+			self::$submenu_parent_slug,
 			__('Parcelware', 'wp-parcelware-plugin'),
 			__('Parcelware', 'wp-parcelware-plugin'),
 			'manage_options',
-			'wp-parcelware-order-page',
+			self::$submenu_menu_slug,
 			array( __CLASS__, 'order_page' )
+		);
+	}
+	
+	/**
+	 * Called on init to initialize scripts and styles
+	 */
+	static function enqueue(){
+		wp_enqueue_style(
+			'jquery-ui',
+			WP_Parcelware::get_plugin_url() . '/style/jquery-ui.css'
+		);
+		
+		wp_enqueue_script(
+			'jquery-ui',
+			WP_Parcelware::get_plugin_url() . '/js/jquery-ui-min.js',
+			array('jquery')
+		);
+		
+		wp_enqueue_script(
+			'jquery-datetime-picker',
+			WP_Parcelware::get_plugin_url() . '/js/jquery-ui-timepicker-addon.js',
+			array('jquery', 'jquery-ui')
 		);
 	}
 	
@@ -31,7 +59,12 @@ class Wp_Parcelware_Admin {
 	 * Shows the parcelware admin page
 	 */
 	static function order_page(){
-		// Include settings page
+		// Form action
+		$form_action = self::$submenu_parent_slug . '?page=' . self::$submenu_menu_slug;
+		
+		// Today
+		$datetime_today = date('o-m-d H:i:s');
+		
 		include_once( WP_Parcelware::get_plugin_path() . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'order-page.php' );
 	}
 }

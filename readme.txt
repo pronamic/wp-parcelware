@@ -1,6 +1,6 @@
 === WP Parcelware ===
 Contributors: Pronamic, RemcoTolsma, StefanBoonstra
-Tags: password, generator, bulk, users
+Tags: parcelware, postnl
 Requires at least: 3.0
 Tested up to: 3.4.1
 Stable tag: 1.0.0

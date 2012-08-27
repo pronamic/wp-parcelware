@@ -1,6 +1,6 @@
 <?php
 /*
- Plugin Name: WP Parcelware
+Plugin Name: WP Parcelware
 Plugin URI:
 Description:
 Version: 1.0.0

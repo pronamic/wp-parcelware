@@ -80,7 +80,7 @@ class WP_Parcelware_Admin {
 	 * Prepares the csv file and offers it as download to the user.
 	 */
 	static function admin_submit(){
-		if( ! isset( $_POST['submit'] ) )
+		if( ! isset( $_POST['submit'] ) || $_GET['page'] != self::$submenu_menu_slug )
 			return;
 		
 		// Get orders between the two defined dates, this function needs a filter.

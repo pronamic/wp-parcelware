@@ -1,4 +1,4 @@
-=== Bulk Password Generator ===
+=== WP Parcelware ===
 Contributors: Pronamic, RemcoTolsma, StefanBoonstra
 Tags: password, generator, bulk, users
 Requires at least: 3.0

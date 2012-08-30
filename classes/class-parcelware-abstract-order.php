@@ -9,7 +9,7 @@
  * @abstract
  * @version 23-08-12
  */
-abstract class WP_Parcelware_Abstract_Order {
+abstract class Parcelware_Abstract_Order {
 	
 	/**
 	 * Post id

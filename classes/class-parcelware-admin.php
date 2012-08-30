@@ -4,13 +4,13 @@
  * 
  * @version 23-08-2012
  */
-class WP_Parcelware_Admin {
+class Parcelware_Admin {
 	
 	/**
 	 * Variables
 	 */
 	private static $submenu_parent_slug = 'tools.php';
-	private static $submenu_menu_slug = 'wp-parcelware-order-page';
+	private static $submenu_menu_slug = 'parcelware-order-page';
 	
 	/**
 	 * Initialize admin
@@ -32,8 +32,8 @@ class WP_Parcelware_Admin {
 	static function admin_menu(){
 		add_submenu_page(
 			self::$submenu_parent_slug,
-			__('Parcelware', 'wp-parcelware-plugin'),
-			__('Parcelware', 'wp-parcelware-plugin'),
+			__('Parcelware', 'parcelware-plugin'),
+			__('Parcelware', 'parcelware-plugin'),
 			'manage_options',
 			self::$submenu_menu_slug,
 			array( __CLASS__, 'order_page' )
@@ -46,18 +46,18 @@ class WP_Parcelware_Admin {
 	static function admin_enqueue(){
 		wp_enqueue_style(
 			'jquery-ui',
-			WP_Parcelware::get_plugin_url() . '/style/jquery-ui.css'
+			Parcelware::get_plugin_url() . '/style/jquery-ui.css'
 		);
 		
 		wp_enqueue_script(
 			'jquery-ui',
-			WP_Parcelware::get_plugin_url() . '/js/jquery-ui-min.js',
+			Parcelware::get_plugin_url() . '/js/jquery-ui-min.js',
 			array('jquery')
 		);
 		
 		wp_enqueue_script(
 			'jquery-datetime-picker',
-			WP_Parcelware::get_plugin_url() . '/js/jquery-ui-timepicker-addon.js',
+			Parcelware::get_plugin_url() . '/js/jquery-ui-timepicker-addon.js',
 			array('jquery', 'jquery-ui')
 		);
 	}
@@ -72,7 +72,7 @@ class WP_Parcelware_Admin {
 		// Today
 		$datetime_today = date('o-m-d H:i:s');
 		
-		include_once( WP_Parcelware::get_plugin_path() . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'order-page.php' );
+		include_once( Parcelware::get_plugin_path() . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'order-page.php' );
 	}
 	
 	/**
@@ -96,19 +96,19 @@ class WP_Parcelware_Admin {
 		remove_filter('posts_where', 'order_page_get_orders_where_dates_between');
 		
 		// Convert all orders to Parcelware objects and export them as csv.
-		$csv = WP_Parcelware_Abstract_Order::get_csv_header() . "\r\n";
+		$csv = Parcelware_Abstract_Order::get_csv_header() . "\r\n";
 		foreach($orders as $order){
 			// Check if already exported. If 'always-export' is set, export order anyways.
-			$already_exported = get_post_meta( $order->ID, 'wp-parcelware-has-already-been-exported', true);
+			$already_exported = get_post_meta( $order->ID, 'parcelware-has-already-been-exported', true);
 			if( $already_exported && isset( $_POST['skip-already-exported'] ) )
 				continue;
 			
 			// Get order and export to csv
-			$class = new WP_Parcelware_Woocommerce_Order( $order->ID );
+			$class = new Parcelware_Woocommerce_Order( $order->ID );
 			$csv .= $class->to_csv(). "\r\n";
 			
 			// Save as exported
-			update_post_meta( $order->ID, 'wp-parcelware-has-already-been-exported', true);
+			update_post_meta( $order->ID, 'parcelware-has-already-been-exported', true);
 		}
 		
 		// Set headers for download

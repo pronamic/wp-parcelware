@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: WP Parcelware
+Plugin Name: Parcelware
 Plugin URI:
 Description:
 Version: 1.0.0
@@ -15,7 +15,7 @@ License: GPLv2
  *
  * @version 22-08-12
  */
-class WP_Parcelware {
+class Parcelware {
 
 	/**
 	 * Bootstraps the plugin
@@ -28,7 +28,7 @@ class WP_Parcelware {
 		self::auto_include();
 		
 		if( is_admin() ) // Initialize admin
-			WP_Parcelware_Admin::init();
+			Parcelware_Admin::init();
 	}
 
 	/**
@@ -36,7 +36,7 @@ class WP_Parcelware {
 	 */
 	static function localize(){
 		load_plugin_textdomain(
-			'wp-parcelware-plugin',
+			'parcelware-plugin',
 			false,
 			dirname(plugin_basename(__FILE__)) . '/languages/'
 		);
@@ -67,7 +67,7 @@ class WP_Parcelware {
 		if( ! function_exists('spl_autoload_register') )
 			return;
 
-		function wp_parcelware_file_autoloader( $name ) {
+		function parcelware_file_autoloader( $name ) {
 			$name = strtolower( str_replace('_', '-', $name ) );
 			$file = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'classes' . DIRECTORY_SEPARATOR . 'class-' . $name . '.php';
 
@@ -75,11 +75,11 @@ class WP_Parcelware {
 				require_once $file;
 		}
 
-		spl_autoload_register('wp_parcelware_file_autoloader');
+		spl_autoload_register('parcelware_file_autoloader');
 	}
 }
 
 /*
  * Bootsrap application
  */
-WP_Parcelware::bootstrap();
+Parcelware::bootstrap();

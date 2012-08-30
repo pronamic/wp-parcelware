@@ -1,4 +1,4 @@
-=== WP Parcelware ===
+=== Parcelware ===
 Contributors: Pronamic, RemcoTolsma, StefanBoonstra
 Tags: parcelware, postnl
 Requires at least: 3.0

@@ -1,10 +1,10 @@
 <?php
 /**
- * The WooCommerce specific implementation op the WP_Parcelware_Abstract_Order class
+ * The WooCommerce specific implementation op the Parcelware_Abstract_Order class
  * 
  * @version 24-08-12
  */
-class WP_Parcelware_Woocommerce_Order extends WP_Parcelware_Abstract_Order {
+class Parcelware_Woocommerce_Order extends Parcelware_Abstract_Order {
 	
 	/**
 	 * Constructor
@@ -16,7 +16,7 @@ class WP_Parcelware_Woocommerce_Order extends WP_Parcelware_Abstract_Order {
 	}
 	
 	/**
-	 * @see Wp_Parcelware_Abstract_Order::read_order_settings()
+	 * @see Parcelware_Abstract_Order::read_order_settings()
 	 */
 	function read_order_settings(){
 		$meta = get_post_custom( $this->get_post_id() );

@@ -20,11 +20,19 @@ GitHub URI: https://github.com/pronamic/wp-parcelware
 
 class Parcelware {
 	/**
+	 * The plugin file
+	 * 
+	 * @var string
+	 */
+	public static $file;
+
+	/**
 	 * Bootstrap
 	 */
-	public static function bootstrap(){
-		// Translate
-		add_action( 'init', array( __CLASS__, 'localize' ) );
+	public static function bootstrap( $file ) {
+		self::$file = $file;
+
+		add_action( 'init', array( __CLASS__, 'init' ) );
 		
 		// Auto include classes
 		self::auto_include();
@@ -36,7 +44,7 @@ class Parcelware {
 	/**
 	 * Translates the plugin
 	 */
-	public static function localize(){
+	public static function init() {
 		load_plugin_textdomain(
 			'parcelware',
 			false,
@@ -49,7 +57,7 @@ class Parcelware {
 	 *
 	 * @return string pluginUrl
 	 */
-	public static function get_plugin_url(){
+	public static function get_plugin_url() {
 		return plugins_url( '', __FILE__ );
 	}
 
@@ -58,15 +66,15 @@ class Parcelware {
 	 *
 	 * @return string pluginPath
 	 */
-	public static function get_plugin_path(){
+	public static function get_plugin_path() {
 		return dirname( __FILE__ );
 	}
 	
 	/**
 	 * This function will load classes automatically on-call.
 	 */
-	public static function auto_include(){
-		if( ! function_exists('spl_autoload_register') )
+	public static function auto_include() {
+		if( ! function_exists('spl_autoload_register' ) )
 			return;
 
 		function parcelware_file_autoloader( $name ) {
@@ -84,4 +92,4 @@ class Parcelware {
 /**
  * Bootsrap application
  */
-Parcelware::bootstrap();
+Parcelware::bootstrap( __FILE__ );

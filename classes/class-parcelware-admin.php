@@ -38,22 +38,11 @@ class Parcelware_Admin {
 	 * Called on init to initialize scripts and styles
 	 */
 	static function admin_enqueue(){
-		wp_enqueue_style(
-			'jquery-ui',
-			Parcelware::get_plugin_url() . '/style/jquery-ui.css'
-		);
+		wp_enqueue_style( 'jquery-ui', plugins_url( 'style/jquery-ui.css', Parcelware::$file ) );
 		
-		wp_enqueue_script(
-			'jquery-ui',
-			Parcelware::get_plugin_url() . '/js/jquery-ui-min.js',
-			array('jquery')
-		);
+		wp_enqueue_script( 'jquery-ui', plugins_url( 'js/jquery-ui-min.js', Parcelware::$file ),  array( 'jquery' ) );
 		
-		wp_enqueue_script(
-			'jquery-datetime-picker',
-			Parcelware::get_plugin_url() . '/js/jquery-ui-timepicker-addon.js',
-			array('jquery', 'jquery-ui')
-		);
+		wp_enqueue_script( 'jquery-datetime-picker', plugins_url( 'js/jquery-ui-timepicker-addon.js', Parcelware::$file ), array( 'jquery', 'jquery-ui') );
 	}
 	
 	/**

@@ -27,7 +27,7 @@ $datetime_today = date( 'o-m-d H:i:s' );
 		</tr>
 		<tr>
 			<td>
-				<?php _e( 'Export', 'parcelware' ); ?>
+				<label for="skip-already-exported"><?php _e( 'Export', 'parcelware' ); ?></label>
 			</td>
 			<td>
 				<input type="checkbox" name="skip-already-exported" id="skip-already-exported" value="true" checked="checked" />

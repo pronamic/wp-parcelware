@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Parcelware
-Plugin URI:
+Plugin URI: http://pronamic.eu/wordpress/parcelware/
 Description:
 Version: 1.0.0
 Requires at least: 3.0

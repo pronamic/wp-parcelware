@@ -7,7 +7,7 @@ Stable tag: 1.0.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create Parcelware importable CSV files from the orders done in your WordPress webshop.
+Create Parcelware importable CSV files from the orders in your WordPress webshop.
 
 == Description ==
 

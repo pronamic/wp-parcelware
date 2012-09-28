@@ -10,16 +10,30 @@ $datetime_today = date( 'o-m-d H:i:s' );
 <form method="post" action="">
 	<table class="form-table">
 		<tr>
-			<td><?php _e( 'Date from', 'parcelware' ); ?></td>
-			<td><input type="text" id="date-from" name="date-from" value="<?php echo $datetime_today; ?>" /></td>
+			<td>
+				<?php _e( 'Date from', 'parcelware' ); ?>
+			</td>
+			<td>
+				<input type="text" id="date-from" name="date-from" value="<?php echo $datetime_today; ?>" />
+			</td>
 		</tr>
 		<tr>
-			<td><?php _e( 'Date to', 'parcelware' ); ?></td>
-			<td><input type="text" id="date-to" name="date-to" value="<?php echo $datetime_today; ?>" /></td>
+			<td>
+				<?php _e( 'Date to', 'parcelware' ); ?>
+			</td>
+			<td>
+				<input type="text" id="date-to" name="date-to" value="<?php echo $datetime_today; ?>" />
+			</td>
 		</tr>
 		<tr>
-			<td><input type="checkbox" name="skip-already-exported" id="skip-already-exported" value="true" checked="checked" /></td>
-			<td><label for="skip-already-exported"><?php _e( 'Skip orders that have already been exported.', 'parcelware' ); ?></label></td>
+			<td>
+				<?php _e( 'Export', 'parcelware' ); ?>
+			</td>
+			<td>
+				<input type="checkbox" name="skip-already-exported" id="skip-already-exported" value="true" checked="checked" />
+
+				<label for="skip-already-exported"><?php _e( 'Skip orders that have already been exported.', 'parcelware' ); ?></label>
+			</td>
 		</tr>
 	</table>
 

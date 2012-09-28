@@ -10,6 +10,9 @@ Requires at least: 3.0
 Author: Pronamic
 Author URI: http://pronamic.eu/
 
+Text Domain: parcelware
+Domain Path: /languages/
+
 License: GPLv2
 */
 

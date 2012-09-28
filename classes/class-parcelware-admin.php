@@ -84,8 +84,11 @@ class Parcelware_Admin {
 		remove_filter( 'posts_where', array( __CLASS__, 'posts_where_between_date' ) );
 
 		// Set headers for download
+		$filename  = __( 'parcelware-orders-export', 'parcelware' );
+		$filename .= '-' . date('Y-m-d_H-i') . '.csv';
+
 		header( 'Content-Type: text/plain;' );
-		header( 'Content-Disposition: attachment; filename=Parcelware-Orders-Export-' . date('o-m-d_H-i') . '.csv' );
+		header( 'Content-Disposition: attachment; filename=' . $filename );
 		
 		// Output and die
 		echo $csv;

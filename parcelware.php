@@ -45,11 +45,7 @@ class Parcelware {
 	 * Translates the plugin
 	 */
 	public static function init() {
-		load_plugin_textdomain(
-			'parcelware',
-			false,
-			dirname( plugin_basename( __FILE__ ) ) . '/languages/'
-		);
+		load_plugin_textdomain( 'parcelware', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**

@@ -14,6 +14,8 @@ Text Domain: parcelware
 Domain Path: /languages/
 
 License: GPLv2
+
+GitHub URI: https://github.com/pronamic/wp-parcelware
 */
 
 /**

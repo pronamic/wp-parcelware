@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parcelware\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-28 10:47+0100\n"
-"PO-Revision-Date: 2012-09-28 10:47+0100\n"
+"POT-Creation-Date: 2012-09-28 10:51+0100\n"
+"PO-Revision-Date: 2012-09-28 10:51+0100\n"
 "Last-Translator: Remco Tolsma <remco@pronamic.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: Dutch\n"
@@ -16,23 +16,23 @@ msgstr ""
 "X-Generator: Poedit 1.5.3\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: views/order-page.php:2
+#: views/order-page.php:7
 msgid "Parcelware Export Orders"
 msgstr "Parcelware exporteer bestellingen"
 
-#: views/order-page.php:8
+#: views/order-page.php:13
 msgid "Date from"
 msgstr "Datum vanaf"
 
-#: views/order-page.php:12
+#: views/order-page.php:17
 msgid "Date to"
 msgstr "Datum tot"
 
-#: views/order-page.php:17
+#: views/order-page.php:22
 msgid "Skip orders that have already been exported."
 msgstr "Sla bestellingen over die al eerder zijn ge&#235;xporteerd."
 
-#: views/order-page.php:20
+#: views/order-page.php:25
 msgid "Download CSV File"
 msgstr "Download CSV bestand"
 

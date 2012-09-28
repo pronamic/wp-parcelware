@@ -58,14 +58,8 @@ class Parcelware_Admin {
 	/**
 	 * Shows the parcelware admin page
 	 */
-	static function order_page(){
-		// Form action
-		$form_action = self::$submenu_parent_slug . '?page=' . self::$submenu_menu_slug;
-		
-		// Today
-		$datetime_today = date('o-m-d H:i:s');
-		
-		include_once( Parcelware::get_plugin_path() . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'order-page.php' );
+	static function order_page(){	
+		include Parcelware::get_plugin_path() . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'order-page.php';
 	}
 	
 	/**

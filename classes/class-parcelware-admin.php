@@ -67,26 +67,26 @@ class Parcelware_Admin {
 	 * Prepares the csv file and offers it as download to the user.
 	 */
 	static function admin_submit(){
-		if( ! isset( $_POST['submit'] ) || $_GET['page'] != self::$submenu_menu_slug )
+		if( ! isset( $_POST['submit'] ) )
 			return;
 		
 		// Get orders between the two defined dates, this function needs a filter.
 		add_filter('posts_where', array( __CLASS__, 'order_page_get_orders_where_dates_between') );
 		$orders = get_posts( array(
-			'numberposts' => -1,
-			'offset' => 0,
-			'orderby' => 'post_date',
-			'order' => 'DESC',
-			'post_type' => 'shop_order',
+			'numberposts'      => -1,
+			'offset'           => 0,
+			'orderby'          => 'post_date',
+			'order'            => 'DESC',
+			'post_type'        => 'shop_order',
 			'suppress_filters' => false
 		) );
 		remove_filter('posts_where', 'order_page_get_orders_where_dates_between');
 		
 		// Convert all orders to Parcelware objects and export them as csv.
 		$csv = Parcelware_Abstract_Order::get_csv_header() . "\r\n";
-		foreach($orders as $order){
+		foreach ( $orders as $order ) {
 			// Check if already exported. If 'always-export' is set, export order anyways.
-			$already_exported = get_post_meta( $order->ID, 'parcelware-has-already-been-exported', true);
+			$already_exported = get_post_meta( $order->ID, 'parcelware-has-already-been-exported', true );
 			if( $already_exported && isset( $_POST['skip-already-exported'] ) )
 				continue;
 			
@@ -95,12 +95,12 @@ class Parcelware_Admin {
 			$csv .= $class->to_csv(). "\r\n";
 			
 			// Save as exported
-			update_post_meta( $order->ID, 'parcelware-has-already-been-exported', true);
+			update_post_meta( $order->ID, 'parcelware-has-already-been-exported', true );
 		}
 		
 		// Set headers for download
-		header("Content-Type: text/plain; ");
-		header("Content-Disposition: attachment; filename=Parcelware-Orders-Export-" . date('o-m-d_H-i') . ".csv");
+		header( 'Content-Type: text/plain;' );
+		header( 'Content-Disposition: attachment; filename=Parcelware-Orders-Export-' . date('o-m-d_H-i') . '.csv' );
 		
 		// Output and die
 		echo $csv;
@@ -113,14 +113,14 @@ class Parcelware_Admin {
 	 * @param string $where
 	 * @return string $where
 	 */
-	static function order_page_get_orders_where_dates_between( $where ){
+	static function order_page_get_orders_where_dates_between( $where ) {
 		global $wpdb;
 		
 		if( isset( $_POST['date-from'] ) )
-			$where .= $wpdb->prepare(" AND post_date >= '%s'", $_POST['date-from']);
+			$where .= $wpdb->prepare( " AND post_date >= '%s'", $_POST['date-from'] );
 			
 		if( isset( $_POST['date-to'] ) )
-			$where .= $wpdb->prepare(" AND post_date <= '%s'", $_POST['date-to']);
+			$where .= $wpdb->prepare( " AND post_date <= '%s'", $_POST['date-to'] );
 		
 		return $where;
 	}

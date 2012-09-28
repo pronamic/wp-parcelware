@@ -1,4 +1,6 @@
-<h3><?php _e('Parcelware Order Exporter', 'parcelware'); ?></h3>
+<h3>
+	<?php _e( 'Parcelware Export Orders', 'parcelware' ); ?>
+</h3>
 
 <form method="post" action="<?php echo $form_action; ?>">
 	<table class="wide-fat">

@@ -59,15 +59,13 @@ class Parcelware_Admin {
 
 		// Add date filter
 		add_filter( 'posts_where', array( __CLASS__, 'posts_where_between_date' ) );
-
-		$query_args = array(
+		
+		$query = new WP_Query( array(
 			'post_type'        => 'shop_order',
 			'orderby'          => 'post_date',
 			'order'            => 'DESC',
 			'nopaging'         => true
-		);
-		
-		$query = new WP_Query( $query_args );
+		) );
 		
 		// Convert all orders to Parcelware objects and export them as csv.
 		$csv = Parcelware_Abstract_Order::get_csv_header() . "\r\n";
@@ -103,11 +101,13 @@ class Parcelware_Admin {
 	static function posts_where_between_date( $where ) {
 		global $wpdb;
 		
-		if( isset( $_POST['date-from'] ) )
-			$where .= $wpdb->prepare( " AND post_date >= '%s'", $_POST['date-from'] );
-			
-		if( isset( $_POST['date-to'] ) )
-			$where .= $wpdb->prepare( " AND post_date <= '%s'", $_POST['date-to'] );
+		$date_from = filter_input( INPUT_POST, 'date-from', FILTER_SANITIZE_STRING );
+		if( !empty( $date_from ) )
+			$where .= $wpdb->prepare( " AND post_date >= '%s'", $date_from );
+
+		$date_to = filter_input( INPUT_POST, 'date-to', FILTER_SANITIZE_STRING );
+		if( !empty( $date_to ) )
+			$where .= $wpdb->prepare( " AND post_date <= '%s'", $date_to );
 		
 		return $where;
 	}

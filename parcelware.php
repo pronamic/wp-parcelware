@@ -38,7 +38,7 @@ class Parcelware {
 	 */
 	public static function localize(){
 		load_plugin_textdomain(
-			'parcelware-plugin',
+			'parcelware',
 			false,
 			dirname( plugin_basename( __FILE__ ) ) . '/languages/'
 		);

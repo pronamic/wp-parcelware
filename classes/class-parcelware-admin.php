@@ -32,8 +32,8 @@ class Parcelware_Admin {
 	static function admin_menu(){
 		add_submenu_page(
 			self::$submenu_parent_slug,
-			__('Parcelware', 'parcelware-plugin'),
-			__('Parcelware', 'parcelware-plugin'),
+			__('Parcelware', 'parcelware'),
+			__('Parcelware', 'parcelware'),
 			'manage_options',
 			self::$submenu_menu_slug,
 			array( __CLASS__, 'order_page' )

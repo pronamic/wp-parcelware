@@ -5,7 +5,7 @@ Plugin URI:
 Description:
 Version: 1.0.0
 Requires at least: 3.0
-Author: Pronamic, RemcoTolsma, StefanBoonstra
+Author: Pronamic
 Author URI: http://pronamic.eu/
 License: GPLv2
 */
@@ -16,9 +16,8 @@ License: GPLv2
  * @version 22-08-12
  */
 class Parcelware {
-
 	/**
-	 * Bootstraps the plugin
+	 * Bootstrap
 	 */
 	static function bootstrap(){
 		// Translate
@@ -79,7 +78,7 @@ class Parcelware {
 	}
 }
 
-/*
+/**
  * Bootsrap application
  */
 Parcelware::bootstrap();

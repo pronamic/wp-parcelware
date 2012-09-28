@@ -87,7 +87,7 @@ class Parcelware_Admin {
 
 		// Set headers for download
 		header( 'Content-Type: text/plain;' );
-		//header( 'Content-Disposition: attachment; filename=Parcelware-Orders-Export-' . date('o-m-d_H-i') . '.csv' );
+		header( 'Content-Disposition: attachment; filename=Parcelware-Orders-Export-' . date('o-m-d_H-i') . '.csv' );
 		
 		// Output and die
 		echo $csv;

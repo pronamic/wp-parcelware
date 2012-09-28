@@ -1,6 +1,6 @@
 <?php 
 
-$datetime_today = date( 'o-m-d H:i:s' );
+$datetime_today = date( 'Y-m-d H:i:s' );
 
 ?>
 <h3>

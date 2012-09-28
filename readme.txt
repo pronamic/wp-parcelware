@@ -24,4 +24,4 @@ Create Parcelware importable CSV files from the orders done in your WordPress we
 == Changelog ==
 
 = 1.0.0 =
-* Initial release
+*	Initial release

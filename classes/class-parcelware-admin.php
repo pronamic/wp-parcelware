@@ -9,14 +9,12 @@ class Parcelware_Admin {
 	/**
 	 * Initialize admin
 	 */
-	static function init(){
-		add_action( 'admin_menu',            array( __CLASS__, 'admin_menu') );		
+	public static function bootstrap() {
+		add_action( 'admin_init',            array( __CLASS__, 'maybe_export' ) );
+		add_action( 'admin_menu',            array( __CLASS__, 'admin_menu') );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'admin_enqueue' ) );
-
-		// When a submit comes through this page, make it go there ASAP
-		self::admin_submit();
 	}
-	
+
 	/**
 	 * Should be called on admin_menu hook. Adds settings pages to the admin menu.
 	 */
@@ -30,7 +28,7 @@ class Parcelware_Admin {
 			array( __CLASS__, 'order_page' ) // function
 		);
 	}
-	
+
 	/**
 	 * Called on init to initialize scripts and styles
 	 */
@@ -41,53 +39,55 @@ class Parcelware_Admin {
 		
 		wp_enqueue_script( 'jquery-datetime-picker', plugins_url( 'js/jquery-ui-timepicker-addon.js', Parcelware::$file ), array( 'jquery', 'jquery-ui') );
 	}
-	
+
 	/**
 	 * Shows the parcelware admin page
 	 */
 	static function order_page() {	
 		include Parcelware::get_plugin_path() . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'parcelware.php';
 	}
-	
+
 	/**
 	 * This function is called when a submit has come through this page
 	 * Prepares the csv file and offers it as download to the user.
 	 */
-	static function admin_submit() {
+	static function maybe_export() {
 		if( ! isset( $_POST['submit'] ) )
 			return;
 		
-		// Get orders between the two defined dates, this function needs a filter.
-		add_filter('posts_where', array( __CLASS__, 'order_page_get_orders_where_dates_between') );
-		$orders = get_posts( array(
-			'numberposts'      => -1,
-			'offset'           => 0,
+		global $post;
+
+		// Add date filter
+		add_filter( 'posts_where', array( __CLASS__, 'posts_where_between_date' ) );
+
+		$query_args = array(
+			'post_type'        => 'shop_order',
 			'orderby'          => 'post_date',
 			'order'            => 'DESC',
-			'post_type'        => 'shop_order',
-			'suppress_filters' => false
-		) );
-		remove_filter('posts_where', 'order_page_get_orders_where_dates_between');
+			'nopaging'         => true
+		);
+		
+		$query = new WP_Query( $query_args );
 		
 		// Convert all orders to Parcelware objects and export them as csv.
 		$csv = Parcelware_Abstract_Order::get_csv_header() . "\r\n";
-		foreach ( $orders as $order ) {
-			// Check if already exported. If 'always-export' is set, export order anyways.
-			$already_exported = get_post_meta( $order->ID, 'parcelware-has-already-been-exported', true );
-			if( $already_exported && isset( $_POST['skip-already-exported'] ) )
-				continue;
-			
-			// Get order and export to csv
-			$class = new Parcelware_Woocommerce_Order( $order->ID );
-			$csv .= $class->to_csv(). "\r\n";
-			
-			// Save as exported
-			update_post_meta( $order->ID, 'parcelware-has-already-been-exported', true );
+
+		if ( $query->have_posts() ) {
+			while ( $query->have_posts() ) {
+				$query->the_post();
+
+				$row = new Parcelware_Woocommerce_Order( $post->ID );
+
+				$csv .= $row->to_csv(). "\r\n";
+			}
 		}
-		
+
+		// Remove date filter
+		remove_filter( 'posts_where', array( __CLASS__, 'posts_where_between_date' ) );
+
 		// Set headers for download
 		header( 'Content-Type: text/plain;' );
-		header( 'Content-Disposition: attachment; filename=Parcelware-Orders-Export-' . date('o-m-d_H-i') . '.csv' );
+		//header( 'Content-Disposition: attachment; filename=Parcelware-Orders-Export-' . date('o-m-d_H-i') . '.csv' );
 		
 		// Output and die
 		echo $csv;
@@ -100,7 +100,7 @@ class Parcelware_Admin {
 	 * @param string $where
 	 * @return string $where
 	 */
-	static function order_page_get_orders_where_dates_between( $where ) {
+	static function posts_where_between_date( $where ) {
 		global $wpdb;
 		
 		if( isset( $_POST['date-from'] ) )

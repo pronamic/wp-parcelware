@@ -140,7 +140,7 @@ abstract class Parcelware_Abstract_Order {
 	 * @param string $variable_name
 	 * @param string $value
 	 */
-	protected function set_variable( $name, $value ){
+	protected function set_variable( $name, $value ) {
 		if( ! array_key_exists( $name, $this->variables ) || ! isset( $value ) )
 			return;
 		

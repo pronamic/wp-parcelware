@@ -26,27 +26,33 @@ class Parcelware {
 	 */
 	public static $file;
 
+	//////////////////////////////////////////////////
+
 	/**
 	 * Bootstrap
 	 */
 	public static function bootstrap( $file ) {
 		self::$file = $file;
 
+		self::autoload();
+
 		add_action( 'init', array( __CLASS__, 'init' ) );
 		
-		// Auto include classes
-		self::auto_include();
-		
-		if( is_admin() ) // Initialize admin
-			Parcelware_Admin::init();
+		if ( is_admin() ) {
+			Parcelware_Admin::bootstrap();
+		}
 	}
 
+	//////////////////////////////////////////////////
+
 	/**
-	 * Translates the plugin
+	 * Initialize
 	 */
 	public static function init() {
 		load_plugin_textdomain( 'parcelware', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
+
+	//////////////////////////////////////////////////
 
 	/**
 	 * Returns path to the base directory of this plugin
@@ -57,14 +63,16 @@ class Parcelware {
 		return dirname( __FILE__ );
 	}
 
+	//////////////////////////////////////////////////
+
 	/**
 	 * This function will load classes automatically on-call.
 	 */
-	public static function auto_include() {
+	public static function autoload() {
 		if( ! function_exists('spl_autoload_register' ) )
 			return;
 
-		function parcelware_file_autoloader( $name ) {
+		function parcelware_autoload( $name ) {
 			$name = strtolower( str_replace( '_', '-', $name ) );
 			$file = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'classes' . DIRECTORY_SEPARATOR . 'class-' . $name . '.php';
 
@@ -72,7 +80,7 @@ class Parcelware {
 				require_once $file;
 		}
 
-		spl_autoload_register( 'parcelware_file_autoloader');
+		spl_autoload_register( 'parcelware_autoload' );
 	}
 }
 

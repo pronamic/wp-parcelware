@@ -25,16 +25,6 @@ $datetime_today = date( 'o-m-d H:i:s' );
 				<input type="text" id="date-to" name="date-to" value="<?php echo $datetime_today; ?>" />
 			</td>
 		</tr>
-		<tr>
-			<td>
-				<label for="skip-already-exported"><?php _e( 'Export', 'parcelware' ); ?></label>
-			</td>
-			<td>
-				<input type="checkbox" name="skip-already-exported" id="skip-already-exported" value="true" checked="checked" />
-
-				<label for="skip-already-exported"><?php _e( 'Skip orders that have already been exported.', 'parcelware' ); ?></label>
-			</td>
-		</tr>
 	</table>
 
 	<?php submit_button( __( 'Download CSV File', 'parcelware' ) ); ?>

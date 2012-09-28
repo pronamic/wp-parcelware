@@ -52,7 +52,7 @@ class Parcelware_Admin {
 	 * Prepares the csv file and offers it as download to the user.
 	 */
 	static function maybe_export() {
-		if( ! isset( $_POST['submit'] ) )
+		if ( empty( $_POST ) || !wp_verify_nonce( filter_input( INPUT_POST, 'parcelware_nonce', FILTER_SANITIZE_STRING ), 'parcelware_export') )
 			return;
 		
 		global $post;

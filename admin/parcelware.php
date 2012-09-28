@@ -8,6 +8,8 @@ $datetime_today = date( 'o-m-d H:i:s' );
 </h3>
 
 <form method="post" action="">
+	<?php wp_nonce_field( 'parcelware_export', 'parcelware_nonce' ); ?>
+
 	<table class="form-table">
 		<tr>
 			<td>

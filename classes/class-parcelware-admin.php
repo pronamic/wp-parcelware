@@ -46,7 +46,7 @@ class Parcelware_Admin {
 	 * Shows the parcelware admin page
 	 */
 	static function order_page() {	
-		include Parcelware::get_plugin_path() . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'order-page.php';
+		include Parcelware::get_plugin_path() . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'parcelware.php';
 	}
 	
 	/**

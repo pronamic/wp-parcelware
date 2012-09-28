@@ -69,7 +69,7 @@ class Parcelware {
 	public static function get_plugin_path() {
 		return dirname( __FILE__ );
 	}
-	
+
 	/**
 	 * This function will load classes automatically on-call.
 	 */

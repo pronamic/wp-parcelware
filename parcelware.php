@@ -18,16 +18,11 @@ License: GPLv2
 GitHub URI: https://github.com/pronamic/wp-parcelware
 */
 
-/**
- * Main class that bootstraps the application
- *
- * @version 22-08-12
- */
 class Parcelware {
 	/**
 	 * Bootstrap
 	 */
-	static function bootstrap(){
+	public static function bootstrap(){
 		// Translate
 		add_action('init', array( __CLASS__, 'localize' ));
 		
@@ -41,7 +36,7 @@ class Parcelware {
 	/**
 	 * Translates the plugin
 	 */
-	static function localize(){
+	public static function localize(){
 		load_plugin_textdomain(
 			'parcelware-plugin',
 			false,
@@ -54,7 +49,7 @@ class Parcelware {
 	 *
 	 * @return string pluginUrl
 	 */
-	static function get_plugin_url(){
+	public static function get_plugin_url(){
 		return plugins_url('', __FILE__ );
 	}
 
@@ -63,14 +58,14 @@ class Parcelware {
 	 *
 	 * @return string pluginPath
 	 */
-	static function get_plugin_path(){
+	public static function get_plugin_path(){
 		return dirname( __FILE__ );
 	}
 	
 	/**
 	 * This function will load classes automatically on-call.
 	 */
-	static function auto_include(){
+	public static function auto_include(){
 		if( ! function_exists('spl_autoload_register') )
 			return;
 

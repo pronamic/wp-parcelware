@@ -8,7 +8,7 @@ $datetime_today = date( 'o-m-d H:i:s' );
 </h3>
 
 <form method="post" action="">
-	<table class="wide-fat">
+	<table class="form-table">
 		<tr>
 			<td><?php _e( 'Date from', 'parcelware' ); ?></td>
 			<td><input type="text" id="date-from" name="date-from" value="<?php echo $datetime_today; ?>" /></td>

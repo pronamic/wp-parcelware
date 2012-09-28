@@ -5,13 +5,6 @@
  * @version 23-08-2012
  */
 class Parcelware_Admin {
-	
-	/**
-	 * Variables
-	 */
-	private static $submenu_parent_slug = 'tools.php';
-	private static $submenu_menu_slug = 'parcelware-order-page';
-	
 	/**
 	 * Initialize admin
 	 */
@@ -31,11 +24,11 @@ class Parcelware_Admin {
 	 */
 	static function admin_menu(){
 		add_submenu_page(
-			self::$submenu_parent_slug,
-			__('Parcelware', 'parcelware'),
-			__('Parcelware', 'parcelware'),
+			'tools.php',
+			__( 'Parcelware', 'parcelware' ),
+			__( 'Parcelware', 'parcelware' ),
 			'manage_options',
-			self::$submenu_menu_slug,
+			'parcelware',
 			array( __CLASS__, 'order_page' )
 		);
 	}

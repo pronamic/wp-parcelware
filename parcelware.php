@@ -24,7 +24,7 @@ class Parcelware {
 	 */
 	public static function bootstrap(){
 		// Translate
-		add_action('init', array( __CLASS__, 'localize' ));
+		add_action( 'init', array( __CLASS__, 'localize' ) );
 		
 		// Auto include classes
 		self::auto_include();
@@ -40,7 +40,7 @@ class Parcelware {
 		load_plugin_textdomain(
 			'parcelware-plugin',
 			false,
-			dirname(plugin_basename(__FILE__)) . '/languages/'
+			dirname( plugin_basename( __FILE__ ) ) . '/languages/'
 		);
 	}
 
@@ -50,7 +50,7 @@ class Parcelware {
 	 * @return string pluginUrl
 	 */
 	public static function get_plugin_url(){
-		return plugins_url('', __FILE__ );
+		return plugins_url( '', __FILE__ );
 	}
 
 	/**
@@ -70,14 +70,14 @@ class Parcelware {
 			return;
 
 		function parcelware_file_autoloader( $name ) {
-			$name = strtolower( str_replace('_', '-', $name ) );
+			$name = strtolower( str_replace( '_', '-', $name ) );
 			$file = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'classes' . DIRECTORY_SEPARATOR . 'class-' . $name . '.php';
 
 			if( is_file( $file ) )
 				require_once $file;
 		}
 
-		spl_autoload_register('parcelware_file_autoloader');
+		spl_autoload_register( 'parcelware_file_autoloader');
 	}
 }
 

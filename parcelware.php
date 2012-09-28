@@ -53,15 +53,6 @@ class Parcelware {
 	}
 
 	/**
-	 * Returns url to the base directory of this plugin.
-	 *
-	 * @return string pluginUrl
-	 */
-	public static function get_plugin_url() {
-		return plugins_url( '', __FILE__ );
-	}
-
-	/**
 	 * Returns path to the base directory of this plugin
 	 *
 	 * @return string pluginPath

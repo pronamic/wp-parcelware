@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Abstract superclass for all orders. This class stores the general values
  * that are used by Parcelware. It is always constructed by it's subclasses
@@ -20,17 +21,17 @@ abstract class Parcelware_Abstract_Order {
 	 * Static keys array 
 	 */
 	static private $variable_keys = array(
-		'order_id' => null,
+		'order_id'   => null,
 		'first_name' => null,
-		'last_name' => null,
-		'address' => null,
-		'address2' => null,
-		'zip' => null,
-		'city' => null,
-		'country' => null,
-		'state' => null,
-		'email' => null,
-		'phone' => null
+		'last_name'  => null,
+		'address'    => null,
+		'address2'   => null,
+		'zip'        => null,
+		'city'       => null,
+		'country'    => null,
+		'state'      => null,
+		'email'      => null,
+		'phone'      => null
 	);
 	
 	/**
@@ -43,7 +44,7 @@ abstract class Parcelware_Abstract_Order {
 	 * 
 	 * @param int $post_id
 	 */
-	protected function __construct( $post_id ){
+	protected function __construct( $post_id ) {
 		$this->set_post_id( $post_id );
 		
 		$this->variables = self::$variable_keys;
@@ -56,15 +57,15 @@ abstract class Parcelware_Abstract_Order {
 	 * 
 	 * @return string $csv
 	 */
-	static function get_csv_header(){
+	static function get_csv_header() {
 		if( empty( self::$variable_keys ) )
 			return '';
 		
 		$csv = '';
-		foreach( self::$variable_keys as $variable_key => $variable_value )
+		foreach ( self::$variable_keys as $variable_key => $variable_value )
 			$csv .= $variable_key . ',';
 		
-		return substr($csv, 0, -1);
+		return substr( $csv, 0, -1 );
 	}
 	
 	/**
@@ -73,7 +74,7 @@ abstract class Parcelware_Abstract_Order {
 	 * @param mixed array $array
 	 * @return string $csv_line
 	 */
-	function to_CSV(){
+	function to_CSV() {
 		if( empty( $this->variables ) )
 			return '';
 		
@@ -89,7 +90,7 @@ abstract class Parcelware_Abstract_Order {
 	 * 
 	 * @return int $post_id
 	 */
-	function get_post_id(){
+	function get_post_id() {
 		return $this->post_id;
 	}
 	
@@ -98,7 +99,7 @@ abstract class Parcelware_Abstract_Order {
 	 * 
 	 * @param int $post_id
 	 */
-	function set_post_id( $post_id ){
+	function set_post_id( $post_id ) {
 		$this->post_id = $post_id;
 	}
 	
@@ -108,7 +109,7 @@ abstract class Parcelware_Abstract_Order {
 	 * @param string $variable_name
 	 * @return mixed $variable
 	 */
-	function get_variable( $name ){
+	function get_variable( $name ) {
 		if( ! isset( $this->variables[ $name ] ) )
 			return;
 		
@@ -120,7 +121,7 @@ abstract class Parcelware_Abstract_Order {
 	 * 
 	 * @return array of strings $variable_keys
 	 */
-	function get_variable_keys(){
+	function get_variable_keys() {
 		return array_keys( $this->variables );
 	}
 	
@@ -129,7 +130,7 @@ abstract class Parcelware_Abstract_Order {
 	 * 
 	 * @return mixed array $variables
 	 */
-	function get_variables(){
+	function get_variables() {
 		return $this->variables;
 	}
 	
@@ -143,7 +144,7 @@ abstract class Parcelware_Abstract_Order {
 		if( ! array_key_exists( $name, $this->variables ) || ! isset( $value ) )
 			return;
 		
-		$this->variables[ $name ] = $value;
+		$this->variables[$name] = $value;
 	}
 	
 	/**

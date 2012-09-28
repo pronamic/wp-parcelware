@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The admin class takes care of building the admin pages of the plugin
  * 

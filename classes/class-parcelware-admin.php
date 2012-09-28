@@ -10,34 +10,31 @@ class Parcelware_Admin {
 	 * Initialize admin
 	 */
 	static function init(){
-		// Load admin menu items
-		add_action('admin_menu', array( __CLASS__, 'admin_menu') );
-		
+		add_action( 'admin_menu',            array( __CLASS__, 'admin_menu') );		
+		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'admin_enqueue' ) );
+
 		// When a submit comes through this page, make it go there ASAP
 		self::admin_submit();
-		
-		// Enqueue scripts and styles
-		add_action('init', array( __CLASS__, 'admin_enqueue') );
 	}
 	
 	/**
 	 * Should be called on admin_menu hook. Adds settings pages to the admin menu.
 	 */
-	static function admin_menu(){
+	static function admin_menu() {
 		add_submenu_page(
-			'tools.php',
-			__( 'Parcelware', 'parcelware' ),
-			__( 'Parcelware', 'parcelware' ),
-			'manage_options',
-			'parcelware',
-			array( __CLASS__, 'order_page' )
+			'tools.php', // parent_slug
+			__( 'Parcelware', 'parcelware' ), // page_title
+			__( 'Parcelware', 'parcelware' ), // menu_title
+			'manage_options', // capability
+			'parcelware', // menu_slug
+			array( __CLASS__, 'order_page' ) // function
 		);
 	}
 	
 	/**
 	 * Called on init to initialize scripts and styles
 	 */
-	static function admin_enqueue(){
+	static function admin_enqueue() {
 		wp_enqueue_style( 'jquery-ui', plugins_url( 'style/jquery-ui.css', Parcelware::$file ) );
 		
 		wp_enqueue_script( 'jquery-ui', plugins_url( 'js/jquery-ui-min.js', Parcelware::$file ),  array( 'jquery' ) );
@@ -48,7 +45,7 @@ class Parcelware_Admin {
 	/**
 	 * Shows the parcelware admin page
 	 */
-	static function order_page(){	
+	static function order_page() {	
 		include Parcelware::get_plugin_path() . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'order-page.php';
 	}
 	
@@ -56,7 +53,7 @@ class Parcelware_Admin {
 	 * This function is called when a submit has come through this page
 	 * Prepares the csv file and offers it as download to the user.
 	 */
-	static function admin_submit(){
+	static function admin_submit() {
 		if( ! isset( $_POST['submit'] ) )
 			return;
 		

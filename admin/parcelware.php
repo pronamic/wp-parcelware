@@ -1,6 +1,7 @@
 <?php 
 
 $datetime_today = date( 'Y-m-d H:i:s' );
+$datetime_previous_week = date('o-m-d H:i:s', strtotime('-1 week') );
 
 ?>
 <h3>
@@ -16,7 +17,7 @@ $datetime_today = date( 'Y-m-d H:i:s' );
 				<?php _e( 'Date from', 'parcelware' ); ?>
 			</td>
 			<td>
-				<input type="text" id="date-from" name="date-from" value="<?php echo $datetime_today; ?>" />
+				<input type="text" id="date-from" name="date-from" value="<?php echo $datetime_previous_week; ?>" />
 			</td>
 		</tr>
 		<tr>

@@ -1,17 +1,17 @@
 <?php
-
 /**
  * The admin class takes care of building the admin pages of the plugin
  * 
  * @version 23-08-2012
  */
 class Parcelware_Admin {
+	
 	/**
 	 * Initialize admin
 	 */
 	public static function bootstrap() {
 		add_action( 'admin_init',            array( __CLASS__, 'maybe_export' ) );
-		add_action( 'admin_menu',            array( __CLASS__, 'admin_menu') );
+		add_action( 'admin_menu',            array( __CLASS__, 'admin_menu' ) );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'admin_enqueue' ) );
 	}
 
@@ -75,7 +75,7 @@ class Parcelware_Admin {
 				$query->the_post();
 
 				$row = new Parcelware_Woocommerce_Order( $post->ID );
-
+				
 				$csv .= $row->to_csv(). "\r\n";
 			}
 		}

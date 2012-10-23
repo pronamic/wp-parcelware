@@ -24,7 +24,7 @@ class Parcelware_Woocommerce_Order extends Parcelware_Abstract_Order {
 		// Separate street name from street number by looping backwards, first occurance of a character means the end of the street name
 		$street = '';
 		$home_nr = '';
-		$address_1 = $meta['_shipping_address_1'][ 0 ];
+		$address_1 = $meta[ '_shipping_address_1' ][ 0 ];
 		for( $i = strlen( $address_1 ) - 1; $i >= 0; $i-- ){
 			if( ! is_numeric( $address_1[ $i ] ) ){
 				$street = trim(substr( $address_1, 0, $i ));
@@ -35,23 +35,17 @@ class Parcelware_Woocommerce_Order extends Parcelware_Abstract_Order {
 		
 		// If no street and home number could be determined, fall back on user input
 		if( empty( $street ) )
-			$street = $meta['_shipping_address_1'][ 0 ];
+			$street = $meta[ '_shipping_address_1' ][ 0 ];
 		if( empty( $home_nr ) || !is_numeric( $home_nr ) )
-			$home_nr = $meta['_shipping_address_2'][ 0 ];
+			$home_nr = $meta[ '_shipping_address_2' ][ 0 ];
 		
 		// Country
-		$country = '';
-		$plugins = maybe_unserialize( $GLOBALS['wp_object_cache']->cache['options']['alloptions']['active_plugins'] );
-		foreach( $plugins as $plugin ){
-			$folder = explode( '/', $plugin );
-			$folder = $folder[ 0 ];
-			
-			$file = dirname( Parcelware::get_plugin_path() ) . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . 'classes' . DIRECTORY_SEPARATOR . 'class-wc-countries.php';
-			if( file_exists( $file ) ){
-				include_once( $file );
-				$countries = new WC_Countries();
-				$country = $countries->countries[ $meta['_shipping_country'][0] ];
-			}
+		$country = $meta[ '_shipping_country' ][ 0 ];
+		$file = dirname( Parcelware::get_plugin_path() ) . DIRECTORY_SEPARATOR . 'woocommerce' . DIRECTORY_SEPARATOR . 'classes' . DIRECTORY_SEPARATOR . 'class-wc-countries.php';
+		if( file_exists( $file ) ){
+			include_once( $file );
+			$countries = new WC_Countries();
+			$country = $countries->countries[ $meta[ '_shipping_country' ][ 0 ] ];
 		}
 		
 		// Items

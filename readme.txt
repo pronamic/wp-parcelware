@@ -3,7 +3,7 @@ Contributors: pronamic, remcotolsma, stefanboonstra
 Tags: parcelware, postnl, post, tnt, csv, woocommerce, export
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable tag: 0.2
+Stable tag: 0.2.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

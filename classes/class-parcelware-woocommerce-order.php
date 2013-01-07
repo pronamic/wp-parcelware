@@ -25,10 +25,10 @@ class Parcelware_Woocommerce_Order extends Parcelware_Abstract_Order {
 		$street = '';
 		$home_nr = '';
 		$address_1 = $meta[ '_shipping_address_1' ][ 0 ];
-		for( $i = strlen( $address_1 ) - 1; $i >= 0; $i-- ){
-			if( ! is_numeric( $address_1[ $i ] ) ){
-				$street = trim(substr( $address_1, 0, $i ));
-				$home_nr = trim(substr( $address_1, $i ));
+		for ( $i = 0 ; $i < strlen( $address_1 ) ; $i++ ) {
+			if (  is_numeric( $address_1[ $i ] ) ) {
+				$street = trim( substr( $address_1, 0, $i ) );
+				$home_nr = trim( substr( $address_1, $i ) );
 				break;
 			}
 		}

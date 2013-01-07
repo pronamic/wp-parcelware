@@ -36,7 +36,7 @@ class Parcelware_Woocommerce_Order extends Parcelware_Abstract_Order {
 		// If no street and home number could be determined, fall back on user input
 		if( empty( $street ) )
 			$street = $meta[ '_shipping_address_1' ][ 0 ];
-		if( empty( $home_nr ) || !is_numeric( $home_nr ) )
+		if( empty( $home_nr ) )
 			$home_nr = $meta[ '_shipping_address_2' ][ 0 ];
 		
 		// Country

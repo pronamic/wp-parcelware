@@ -50,10 +50,12 @@ class Parcelware_Woocommerce_Order extends Parcelware_Abstract_Order {
 		
 		// Items
 		$items = array();
-		$meta_items = maybe_unserialize( $meta[ '_order_items' ][ 0 ] );
-		foreach( $meta_items as $meta_item )
+		
+		$order = new WC_Order( $this->get_post_id() );
+		foreach ( $order->get_items() as $meta_item ) {
 			if( isset( $meta_item[ 'id' ] ) && ! empty( $meta_item[ 'id' ] ) )
 				$items[] = $meta_item[ 'id' ];
+		}
 		
 		$order_settings = array(
 			'IMPORT_SHIPMENT_REF' => $this->get_post_id(),

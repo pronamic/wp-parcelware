@@ -41,12 +41,8 @@ class Parcelware_Woocommerce_Order extends Parcelware_Abstract_Order {
 		
 		// Country
 		$country = $meta[ '_shipping_country' ][ 0 ];
-		$file = dirname( Parcelware::get_plugin_path() ) . DIRECTORY_SEPARATOR . 'woocommerce' . DIRECTORY_SEPARATOR . 'classes' . DIRECTORY_SEPARATOR . 'class-wc-countries.php';
-		if( file_exists( $file ) ){
-			include_once( $file );
-			$countries = new WC_Countries();
-			$country = $countries->countries[ $meta[ '_shipping_country' ][ 0 ] ];
-		}
+		$countries = new WC_Countries();
+		$country = $countries->countries[ $meta[ '_shipping_country' ][ 0 ] ];
 		
 		// Items
 		$items = array();

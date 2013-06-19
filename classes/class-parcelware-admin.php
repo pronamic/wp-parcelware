@@ -19,13 +19,33 @@ class Parcelware_Admin {
 	 * Should be called on admin_menu hook. Adds settings pages to the admin menu.
 	 */
 	static function admin_menu() {
+		// Tools
 		add_submenu_page(
 			'tools.php', // parent_slug
 			__( 'Parcelware', 'parcelware' ), // page_title
 			__( 'Parcelware', 'parcelware' ), // menu_title
 			'manage_options', // capability
+			'parcelware-tools', // menu_slug
+			array( __CLASS__, 'page_tools' ) // function
+		);
+		
+		// Parcelware
+		add_menu_page( 
+			__( 'Parcelware', 'parcelware' ), // page_title
+			__( 'Parcelware', 'parcelware' ), // menu_title
+			'manage_options', // capability
 			'parcelware', // menu_slug
-			array( __CLASS__, 'order_page' ) // function
+			array( __CLASS__, 'page_parcelware' ), // function
+			plugins_url( 'images/parcelware-icon-16x16.png', Parcelware::$file ) // icon_url
+		);
+
+		add_submenu_page(
+			'parcelware', // parent_slug
+			__( 'Parcelware Documentation', 'parcelware' ), // page_title
+			__( 'Documentation', 'parcelware' ), // menu_title
+			'manage_options', // capability
+			'parcelware-documentation', // menu_slug
+			array( __CLASS__, 'page_documentation' ) // function
 		);
 	}
 
@@ -47,10 +67,24 @@ class Parcelware_Admin {
 	}
 
 	/**
-	 * Shows the parcelware admin page
+	 * Page tools
 	 */
-	static function order_page() {	
+	public static function page_tools() {	
+		include Parcelware::get_plugin_path() . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'tools.php';
+	}
+
+	/**
+	 * Page Parcelware
+	 */
+	public static function page_parcelware() {	
 		include Parcelware::get_plugin_path() . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'parcelware.php';
+	}
+
+	/**
+	 * Page documentation
+	 */
+	public static function page_documentation() {	
+		include Parcelware::get_plugin_path() . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'documentation.php';
 	}
 
 	/**

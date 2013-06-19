@@ -8,6 +8,13 @@
 	<?php 
 	
 	$providers = array(
+		'parcelware-web.nl' => array(
+			'name'      => 'Parcelware|Web',
+			'url'       => 'https://www.parcelware-web.nl/',
+			'resources' => array(
+					
+			)
+		),
 		'postnlpakketten.nl' => array(
 			'name'      => 'PostNL Pakketten',
 			'url'       => 'http://www.postnlpakketten.nl/', 

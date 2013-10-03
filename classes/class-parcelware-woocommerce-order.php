@@ -99,9 +99,10 @@ class Parcelware_Woocommerce_Order extends Parcelware_Abstract_Order {
 	 * @access public
 	 */
 	public function items_as_comma( $items ) {
+		$xml_items = array();
 		foreach ( $items as $item ) {
-			if ( ! empty( $item['id'] ) )
-				$xml_items[] = $item['id'];
+			if ( ! empty( $item['product_id'] ) )
+				$xml_items[] = $item['product_id'];
 		}
 		
 		return implode( ',', $xml_items );

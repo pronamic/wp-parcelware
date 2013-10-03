@@ -27,6 +27,7 @@ Create Parcelware importable CSV files from the orders in your WordPress webshop
 
 = 0.2.3 =
 * Fixed bug with items not correctly being added
+* Can now specify XML items
 
 = 0.2.2 =
 * Fixed bug with housenumbers like 88a and 88-90.

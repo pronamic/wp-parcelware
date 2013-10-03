@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parcelware\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-28 12:01+0100\n"
-"PO-Revision-Date: 2012-09-28 12:01+0100\n"
+"POT-Creation-Date: 2013-10-03 11:10+0100\n"
+"PO-Revision-Date: 2013-10-03 11:10+0100\n"
 "Last-Translator: Remco Tolsma <remco@pronamic.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: Dutch\n"
@@ -13,30 +13,55 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.5.3\n"
+"X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/parcelware.php:7
+#: admin/documentation.php:39
+msgid "Title"
+msgstr "Titel"
+
+#: admin/documentation.php:40
+msgid "Date"
+msgstr "Datum"
+
+#: admin/documentation.php:41
+msgid "Version"
+msgstr "Versie"
+
+#: admin/tools.php:8
 msgid "Parcelware Export Orders"
 msgstr "Parcelware exporteer bestellingen"
 
-#: admin/parcelware.php:16
+#: admin/tools.php:17
 msgid "Date from"
 msgstr "Datum vanaf"
 
-#: admin/parcelware.php:24
+#: admin/tools.php:25
 msgid "Date to"
 msgstr "Datum tot"
 
-#: admin/parcelware.php:32
+#: admin/tools.php:33
+msgid "XML Items?"
+msgstr "XML Items?"
+
+#: admin/tools.php:41
 msgid "Download CSV File"
 msgstr "Download CSV bestand"
 
-#: classes/class-parcelware-admin.php:24 classes/class-parcelware-admin.php:25
+#: classes/class-parcelware-admin.php:25 classes/class-parcelware-admin.php:26
+#: classes/class-parcelware-admin.php:34 classes/class-parcelware-admin.php:35
 msgid "Parcelware"
 msgstr "Parcelware"
 
-#: classes/class-parcelware-admin.php:87
+#: classes/class-parcelware-admin.php:44
+msgid "Parcelware Documentation"
+msgstr "Parcelware Documentatie"
+
+#: classes/class-parcelware-admin.php:45
+msgid "Documentation"
+msgstr "Documentatie"
+
+#: classes/class-parcelware-admin.php:131
 msgid "parcelware-orders-export"
 msgstr "parcelware-bestellingen-export"
 

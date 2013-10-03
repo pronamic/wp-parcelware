@@ -6,19 +6,11 @@
  */
 class Parcelware_Woocommerce_Order extends Parcelware_Abstract_Order {
 	
-	/**
-	 * Constructor
-	 * 
-	 * @param int $post_id
-	 */
-	function __construct( $post_id ){
-		parent::__construct( $post_id );
-	}
 	
 	/**
 	 * @see Parcelware_Abstract_Order::read_order_settings()
 	 */
-	function read_order_settings(){
+	function read_order_settings( $xml_items = true ){
 		$meta = get_post_custom( $this->get_post_id() );
 		
 		// Separate street name from street number by looping backwards, first occurance of a character means the end of the street name
@@ -45,21 +37,17 @@ class Parcelware_Woocommerce_Order extends Parcelware_Abstract_Order {
 		$country = $countries->countries[ $meta[ '_shipping_country' ][ 0 ] ];
 		
 		// Items
-		$items = array();
-		
 		$order = new WC_Order( $this->get_post_id() );
-		foreach ( $order->get_items() as $meta_item ) {
-			if( isset( $meta_item[ 'id' ] ) && ! empty( $meta_item[ 'id' ] ) )
-				$items[] = $meta_item[ 'id' ];
-		}
+		
+		$items = ( true === $xml_items ) ? $this->items_as_xml( $order->get_items() ) : $this->items_as_comma( $order->get_items() );
 		
 		$order_settings = array(
 			'IMPORT_SHIPMENT_REF' => $this->get_post_id(),
 			'IMPORT_SENDER_REF' => 1,
 			'IMPORT_CLIENT_REF' => 1,
 			'IMPORT_CONTRACT_NAME' => 'TNT post pakketservice9707',
-			'IMPORT_SHIPMENT_ITEMS' => implode( ',', $items ),
-			'IMPORT_RECEIVER_COMPANYNAME' => $meta[ '_shipping_last_name' ][ 0 ],
+			'IMPORT_SHIPMENT_ITEMS' => $items,
+			'IMPORT_RECEIVER_COMPANYNAME' => ( ! empty( $meta[ '_shipping_company' ][ 0 ] ) ? $meta['_shipping_company'][0] : $meta['_shipping_last_name'][0] ),
 			'IMPORT_RECEIVER_LASTNAME' => $meta[ '_shipping_last_name' ][ 0 ],
 			'IMPORT_RECEIVER_FIRSTNAME' => $meta[ '_shipping_first_name' ][ 0 ],
 			'IMPORT_RECEIVER_STREET' => $street,
@@ -75,5 +63,47 @@ class Parcelware_Woocommerce_Order extends Parcelware_Abstract_Order {
 		
 		foreach($order_settings as $key => $order_setting)
 			$this->set_variable($key, $order_setting);
+	}
+	
+	/**
+	 * Splits the items of an order into an XML string.
+	 * 
+	 * @access public
+	 */
+	public function items_as_xml( $items ) {
+		$xml_items = new DOMDocument();
+		$items_element = $xml_items->createElement( 'items' );
+		$xml_items->appendChild( $items_element );
+		
+		foreach ( $items as $item ) {
+			if ( ! empty( $item['product_id'] ) ) {
+				// Create the item element
+				$item_element = $xml_items->createElement( 'item' );
+				
+				// Create ID attribute
+				$item_id_attribute = $xml_items->createAttribute( 'id' );
+				$item_id_attribute->value = $item['product_id'];
+				$item_element->appendChild( $item_id_attribute );
+				
+				// Add to parent document
+				$items_element->appendChild( $item_element );
+			}
+		}
+		
+		return '"' . (string) $xml_items->saveXML( $xml_items->documentElement ) . '"';
+	}
+	
+	/**
+	 * Splits the items of an order into a comma delimited string
+	 * 
+	 * @access public
+	 */
+	public function items_as_comma( $items ) {
+		foreach ( $items as $item ) {
+			if ( ! empty( $item['id'] ) )
+				$xml_items[] = $item['id'];
+		}
+		
+		return implode( ',', $xml_items );
 	}
 }

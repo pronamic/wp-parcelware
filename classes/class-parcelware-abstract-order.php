@@ -70,7 +70,7 @@ abstract class Parcelware_Abstract_Order {
 	 * 
 	 * @param int $post_id
 	 */
-	protected function __construct( $post_id, $xml_items = true ){
+	public function __construct( $post_id, $xml_items = true ){
 		$this->set_post_id( $post_id );
 		
 		$this->variables = self::$variable_keys;

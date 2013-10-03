@@ -28,6 +28,14 @@ $datetime_previous_week = date('o-m-d H:i:s', strtotime('-1 week') );
 				<input type="text" id="date-to" name="date-to" value="<?php echo $datetime_today; ?>" />
 			</td>
 		</tr>
+		<tr>
+			<td>
+				<label for="xml_items"><?php _e( 'XML Items?', 'parcelware' ); ?></label>
+			</td>
+			<td>
+				<input type="checkbox" id="xml_items" name="xml_items" checked="checked"/>
+			</td>
+		</tr>
 	</table>
 
 	<?php submit_button( __( 'Download CSV File', 'parcelware' ) ); ?>

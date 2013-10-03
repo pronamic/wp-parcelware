@@ -96,7 +96,11 @@ class Parcelware_Admin {
 			return;
 		
 		global $post;
-
+		
+		// Wether to import as XML items ( support backwards compat, as no other
+		// reports of this not working have come in after numerous downloads ?
+		$xml_items = (boolean) filter_input( INPUT_POST, 'xml_items', FILTER_VALIDATE_BOOLEAN );
+		
 		// Add date filter
 		add_filter( 'posts_where', array( __CLASS__, 'posts_where_between_date' ) );
 		
@@ -114,7 +118,7 @@ class Parcelware_Admin {
 			while ( $query->have_posts() ) {
 				$query->the_post();
 
-				$row = new Parcelware_Woocommerce_Order( $post->ID );
+				$row = new Parcelware_Woocommerce_Order( $post->ID, $xml_items );
 				
 				$csv .= $row->to_csv(). "\r\n";
 			}

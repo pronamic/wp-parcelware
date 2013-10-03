@@ -6,14 +6,6 @@
  */
 class Parcelware_Woocommerce_Order extends Parcelware_Abstract_Order {
 	
-	/**
-	 * Constructor
-	 * 
-	 * @param int $post_id
-	 */
-	function __construct( $post_id ){
-		parent::__construct( $post_id );
-	}
 	
 	/**
 	 * @see Parcelware_Abstract_Order::read_order_settings()

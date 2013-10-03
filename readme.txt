@@ -3,7 +3,7 @@ Contributors: pronamic, remcotolsma, stefanboonstra
 Tags: parcelware, postnl, post, tnt, csv, woocommerce, export
 Requires at least: 3.0
 Tested up to: 3.5
-Stable tag: 0.2.2
+Stable tag: 0.3.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,6 +22,12 @@ Create Parcelware importable CSV files from the orders in your WordPress webshop
 
 
 == Changelog ==
+= 0.3.0 =
+* New settings page for documentation and Pronamic information
+
+= 0.2.3 =
+* Fixed bug with items not correctly being added
+
 = 0.2.2 =
 * Fixed bug with housenumbers like 88a and 88-90.
 

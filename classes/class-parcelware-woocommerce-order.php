@@ -47,7 +47,7 @@ class Parcelware_Woocommerce_Order extends Parcelware_Abstract_Order {
 			'IMPORT_CLIENT_REF' => 1,
 			'IMPORT_CONTRACT_NAME' => 'TNT post pakketservice9707',
 			'IMPORT_SHIPMENT_ITEMS' => $items,
-			'IMPORT_RECEIVER_COMPANYNAME' => ( ! empty( $meta[ '_shipping_company' ][ 0 ] ) ? $meta['_shipping_company'][0] : $meta['_shipping_last_name'][0] ),
+			'IMPORT_RECEIVER_COMPANYNAME' => ( ! empty( $meta[ '_shipping_company' ][ 0 ] ) ? $meta['_shipping_company'][0] : ' ' ),
 			'IMPORT_RECEIVER_LASTNAME' => $meta[ '_shipping_last_name' ][ 0 ],
 			'IMPORT_RECEIVER_FIRSTNAME' => $meta[ '_shipping_first_name' ][ 0 ],
 			'IMPORT_RECEIVER_STREET' => $street,

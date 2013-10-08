@@ -90,7 +90,7 @@ class Parcelware_Woocommerce_Order extends Parcelware_Abstract_Order {
 			}
 		}
 		
-		return '"' . (string) $xml_items->saveXML( $xml_items->documentElement ) . '"';
+		return (string) $xml_items->saveXML( $xml_items->documentElement );
 	}
 	
 	/**

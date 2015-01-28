@@ -1,5 +1,5 @@
 === Parcelware ===
-Contributors: pronamic, remcotolsma, stefanboonstra
+Contributors: pronamic, remcotolsma
 Tags: parcelware, postnl, post, tnt, csv, woocommerce, export
 Requires at least: 3.0
 Tested up to: 3.5

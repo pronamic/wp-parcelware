@@ -4,7 +4,7 @@ Plugin Name: Parcelware
 Plugin URI: http://www.pronamic.eu/plugins/parcelware/
 Description: Create Parcelware importable CSV files from the orders in your WordPress webshop.
 
-Version: 0.3.3
+Version: 1.0.0
 Requires at least: 3.0
 
 Author: Pronamic

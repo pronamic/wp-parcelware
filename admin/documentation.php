@@ -34,9 +34,9 @@
 
 			<<?php echo $tag; ?>>
 				<tr>
-					<th scope="col" class="manage-column"><?php _e( 'Title', 'pronamic_ideal' ); ?></th>
-					<th scope="col" class="manage-column"><?php _e( 'Date', 'pronamic_ideal' );  ?></th>
-					<th scope="col" class="manage-column"><?php _e( 'Version', 'pronamic_ideal' );  ?></th>
+					<th scope="col" class="manage-column"><?php _e( 'Title', 'parcelware' ); ?></th>
+					<th scope="col" class="manage-column"><?php _e( 'Date', 'parcelware' );  ?></th>
+					<th scope="col" class="manage-column"><?php _e( 'Version', 'parcelware' );  ?></th>
 				</tr>
 			</<?php echo $tag; ?>>
 

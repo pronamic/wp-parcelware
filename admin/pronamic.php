@@ -1,4 +1,4 @@
-<h2>Pronamic</h2>
+<h2><?php _e( 'Pronamic', 'parcelware' ); ?></h2>
 
 <h3>Facebook</h3>
 

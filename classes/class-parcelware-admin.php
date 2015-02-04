@@ -106,6 +106,7 @@ class Parcelware_Admin {
 		
 		$query = new WP_Query( array(
 			'post_type'        => 'shop_order',
+			'post_status'      => 'any',
 			'orderby'          => 'post_date',
 			'order'            => 'DESC',
 			'nopaging'         => true

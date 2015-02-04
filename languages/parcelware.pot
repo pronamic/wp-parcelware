@@ -1,70 +1,69 @@
+# Copyright (C) 2015 Pronamic
+# This file is distributed under the GPLv2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Parcelware\n"
+"Project-Id-Version: Parcelware 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/parcelware\n"
 "POT-Creation-Date: 2015-01-28 15:42:41+00:00\n"
-"PO-Revision-Date: 2015-01-28 16:43+0100\n"
-"Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
-"Language-Team: Pronamic <info@pronamic.nl>\n"
-"Language: nl\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.7.1\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.4.9\n"
 
 #: admin/documentation.php:37
 msgid "Title"
-msgstr "Titel"
+msgstr ""
 
 #: admin/documentation.php:38
 msgid "Date"
-msgstr "Datum"
+msgstr ""
 
 #: admin/documentation.php:39
 msgid "Version"
-msgstr "Versie"
+msgstr ""
 
 #: admin/tools.php:8
 msgid "Parcelware Export Orders"
-msgstr "Parcelware exporteer bestellingen"
+msgstr ""
 
 #: admin/tools.php:17
 msgid "Date from"
-msgstr "Datum vanaf"
+msgstr ""
 
 #: admin/tools.php:25
 msgid "Date to"
-msgstr "Datum tot"
+msgstr ""
 
 #: admin/tools.php:33
 msgid "XML Items?"
-msgstr "XML Items?"
+msgstr ""
 
 #: admin/tools.php:41
 msgid "Download CSV File"
-msgstr "Download CSV bestand"
+msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "Parcelware"
-msgstr "Parcelware"
+msgstr ""
 
 #: classes/class-parcelware-admin.php:44
 msgid "Parcelware Documentation"
-msgstr "Parcelware Documentatie"
+msgstr ""
 
 #: classes/class-parcelware-admin.php:45
 msgid "Documentation"
-msgstr "Documentatie"
+msgstr ""
 
 #: classes/class-parcelware-admin.php:132
 msgid "parcelware-orders-export"
-msgstr "parcelware-bestellingen-export"
+msgstr ""
 
 #. Plugin URI of the plugin/theme
 msgid "http://www.pronamic.eu/plugins/parcelware/"
-msgstr "http://www.pronamic.eu/plugins/parcelware/"
+msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
@@ -74,14 +73,8 @@ msgstr ""
 
 #. Author of the plugin/theme
 msgid "Pronamic"
-msgstr "Pronamic"
+msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "http://www.pronamic.eu/"
-msgstr "http://www.pronamic.nl/"
-
-#~ msgid "Export"
-#~ msgstr "Exporteer"
-
-#~ msgid "Skip orders that have already been exported."
-#~ msgstr "Sla bestellingen over die al eerder zijn ge&#235;xporteerd."
+msgstr ""

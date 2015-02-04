@@ -23,6 +23,10 @@ Create Parcelware importable CSV files from the orders in your WordPress webshop
 
 == Changelog ==
 
+= 1.0.0 =
+*	Added default XML row in the export.
+*	Updated support for WooCommerce version 2.2.11.
+
 = 0.3.2 =
 *	Updated README
 

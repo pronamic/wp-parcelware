@@ -1,15 +1,19 @@
 === Parcelware ===
 Contributors: pronamic, remcotolsma
-Tags: parcelware, postnl, post, tnt, csv, woocommerce, export
+Tags: parcelware, postnl, post, tnt, csv, woocommerce, export, deprecated, adopt-me
 Requires at least: 3.0
 Tested up to: 4.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Create Parcelware importable CSV files from the orders in your WordPress webshop.
 
 == Description ==
+
+> This plugin is deprecated so Pronamic wil no longer support and maintain this plugin.
+> 
+> If you want to help maintain the plugin, fork it on [GitHub](https://github.com/pronamic/wp-parcelware) and open pull requests.
 
 
 == Installation ==
@@ -22,6 +26,9 @@ Create Parcelware importable CSV files from the orders in your WordPress webshop
 
 
 == Changelog ==
+
+= 1.0.1 =
+*	Added an deprecated notice.
 
 = 1.0.0 =
 *	Added default XML row in the export.

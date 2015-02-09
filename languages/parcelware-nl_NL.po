@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parcelware\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/parcelware\n"
-"POT-Creation-Date: 2015-01-28 15:42:41+00:00\n"
-"PO-Revision-Date: 2015-01-28 16:43+0100\n"
+"POT-Creation-Date: 2015-02-09 09:26:11+00:00\n"
+"PO-Revision-Date: 2015-02-09 10:26+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl\n"
@@ -14,17 +14,21 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.7.1\n"
 
-#: admin/documentation.php:37
+#: admin/documentation.php:35
 msgid "Title"
 msgstr "Titel"
 
-#: admin/documentation.php:38
+#: admin/documentation.php:36
 msgid "Date"
 msgstr "Datum"
 
-#: admin/documentation.php:39
+#: admin/documentation.php:37
 msgid "Version"
 msgstr "Versie"
+
+#. Author of the plugin/theme
+msgid "Pronamic"
+msgstr "Pronamic"
 
 #: admin/tools.php:8
 msgid "Parcelware Export Orders"
@@ -68,13 +72,11 @@ msgstr "http://www.pronamic.eu/plugins/parcelware/"
 
 #. Description of the plugin/theme
 msgid ""
-"Create Parcelware importable CSV files from the orders in your WordPress "
-"webshop."
+"Deprecated — Create Parcelware importable CSV files from the orders in your "
+"WordPress webshop."
 msgstr ""
-
-#. Author of the plugin/theme
-msgid "Pronamic"
-msgstr "Pronamic"
+"Deprecated — Create Parcelware importable CSV files from the orders in your "
+"WordPress webshop."
 
 #. Author URI of the plugin/theme
 msgid "http://www.pronamic.eu/"

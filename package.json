@@ -1,7 +1,7 @@
 {
   "name": "parcelware",
-  "version": "1.0.0",
-  "description": "WordPress plugin for Pronamic clients.",
+  "version": "1.0.1",
+  "description": "Create Parcelware importable CSV files from the orders in your WordPress webshop.",
   "repository": {
     "type": "git",
     "url": "https://github.com/pronamic/wp-parcelware.git"
